@@ -80,5 +80,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WindowsFormsApp1\WindowsFormsApp1\RUB.csproj">
+      <Project>{b620fdef-1dad-401b-8ded-40736c62832a}</Project>
+      <Name>RUB</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

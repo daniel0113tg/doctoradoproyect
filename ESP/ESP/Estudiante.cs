@@ -8,20 +8,28 @@
  */
 using System;
 using System.CodeDom.Compiler;
+using System.IO;
 
 namespace ESP
 {
 	/// <summary>
 	/// Description of Estudiante.
 	/// </summary>
-	public class Estudiante:Usuario
+	public class Estudiante
 	{
-		public Estudiante()
+		public Estudiante(String username)
 		{
+
 		}
-		
-		public override void generarInterfaz(){
-			
-		}
+
+        public void GuardaPublicacion(String[] param)
+        {
+            String respuesta, cadena;
+            cadena = param[0] + "," + param[1]+","+param[2];
+            //crear o abrir el archivo 
+            StreamWriter escribir = File.AppendText("formatos.txt");
+                escribir.WriteLine(cadena+"\n");
+            escribir.Close();
+        }
 	}
 }

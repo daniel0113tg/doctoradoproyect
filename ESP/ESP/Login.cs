@@ -13,7 +13,7 @@ namespace ESP
 {
     public partial class Login : Form
     {
-        ControladorEstudiante control = new ControladorEstudiante();
+        private Fachada fachada = new Fachada();
         private String[] parametros = new String[3];
         private bool esperaparametros = true;
         private Panel panelPieDePagina;
@@ -375,21 +375,16 @@ namespace ESP
                 parametros[0] = modo.Text;
                 parametros[1] = usuario.Text;
                 parametros[2] = clave.Text;
-                if (control.iniciarSesion(parametros))
+                if (fachada.iniciarSesion(parametros))
                 {
                     this.Hide();
-                    control.abrirFormRol();
+                    fachada.abrirFormRol();
                 }
             }
             else
             {
-                // MessageBox.Show("POR FAVOR SELECCIONE UN MODO",}"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 MessageBox.Show(" POR FAVOR SELECCIONE UN MODO PRIMERO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        public ControladorEstudiante getControl()
-        {
-            return control;
         }
     }
 }

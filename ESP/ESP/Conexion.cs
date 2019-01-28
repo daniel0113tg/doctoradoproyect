@@ -12,22 +12,13 @@ namespace ESP
 {
     class Conexion
     {
-        private SqlConnection conexion = new SqlConnection("Data Source=ALEXA-97;Initial Catalog=aval;Integrated Security=True");
-
+        
+        private SqlConnection conexion = new SqlConnection("server=HP-ELITEBOOK\\SQLEXPRESS ; database=doctorado ; integrated security = true");
         public SqlConnection abrirConexion()
         {
             if (conexion.State == ConnectionState.Closed)
             {
                 conexion.Open();
-            }
-            return conexion;
-        }
-
-        public SqlConnection cerrarConexion()
-        {
-            if (conexion.State == ConnectionState.Open)
-            {
-                conexion.Close();
             }
             return conexion;
         }

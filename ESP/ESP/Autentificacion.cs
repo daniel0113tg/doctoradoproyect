@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ESP
 {
     class Autentificacion
     {
-        private String[] archivos = { "logEst.txt", "logDoc.txt", "logCor.txt", "logPro.txt" };
         public Autentificacion()
         {
         }
@@ -35,25 +36,29 @@ namespace ESP
             return i;
         }
 
-        public Boolean verificarContrasena(String tipo, String usuario, String contrasena)
-        {
-            int tipoCuenta = devuelveTipo(tipo);
-            Boolean ban = false;
-            String line = "";
-            ArrayList arrText = cargarArchivo(archivos[tipoCuenta]);
-            for (int i = 0; i < arrText.Count; i++)
+            public Boolean verificarContrasena(String tipo, String usuario, String contrasena)
             {
-                line = (string)arrText[i];
-                String[] aux = line.Split(';');
-                if (usuario.CompareTo(aux[0]) == 0)
+                Boolean ban = false;
+                String line = "";
+                SqlConnection cn = new Conexion().abrirConexion();
+                string cadena = "SELECT CEDULA FROM " + tipo + " WHERE CEDULA ='" + usuario + "'";
+                SqlCommand cmd = new SqlCommand(cadena, cn);
+                SqlDataReader leer = cmd.ExecuteReader();
+            try
+            {
+                if (leer.Read() == true)
                 {
-                    line = aux[1];
-                    Console.WriteLine("lola");
-                    break;
+                    ban = true;
                 }
+                cn.Close();
             }
-            return line.CompareTo(contrasena) == 0;
-        }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return ban;
+            }
+        
 
         private ArrayList cargarArchivo(String file)
         {

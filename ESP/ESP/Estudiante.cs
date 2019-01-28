@@ -181,9 +181,5 @@ namespace ESP
             }
             cn.Close();
         }
-        public void insertaRevista(String[] array)
-        {
-
-        }
     }
 }

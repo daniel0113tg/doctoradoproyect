@@ -45,7 +45,8 @@ namespace ESP
                     break;
                 case 2:
 
-                    //coordinador 
+                    Cordinador cordinador = new Cordinador();
+                    cordinador.Show();
                     break;
                 case 3:
                    

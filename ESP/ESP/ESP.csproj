@@ -54,6 +54,12 @@
     <Compile Include="Autentificacion.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="ControladorEstudiante.cs" />
+    <Compile Include="Cordinador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cordinador.Designer.cs">
+      <DependentUpon>Cordinador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Estudiante.cs" />
     <Compile Include="EstudianteForm.cs">
       <SubType>Form</SubType>
